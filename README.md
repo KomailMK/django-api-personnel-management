@@ -147,7 +147,7 @@ if __name__ == "__main__":
     
     print("=== Getting Statistics ===")
     get_statistics()
-\```
+```
 
 Run it:
 ```bash
