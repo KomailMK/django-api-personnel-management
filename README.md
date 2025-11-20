@@ -162,7 +162,7 @@ python test_api.py
 2. Create a file called `api-requests.http`
 3. Add this content:
 
-```http
+```bash
 ### Create new personnel
 POST http://localhost:8000/api/personnel/
 Content-Type: application/json
@@ -172,14 +172,20 @@ Content-Type: application/json
   "department": "Marketing",
   "face_encoding": "[0.3456, 0.7890, 0.2345, 0.6677]"
 }
+```
 
 ### Get all personnel
+```bash
 GET http://localhost:8000/api/personnel/
+```
 
 ### Get statistics
+```bash
 GET http://localhost:8000/api/statistics/
+```
 
 ### Create multiple personnel (run this multiple times)
+```bash
 POST http://localhost:8000/api/personnel/
 Content-Type: application/json
 
