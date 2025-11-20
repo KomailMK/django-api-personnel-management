@@ -162,8 +162,9 @@ python test_api.py
 2. Create a file called `api-requests.http`
 3. Add this content:
 
-```bash
+
 ### Create new personnel
+```bash
 POST http://localhost:8000/api/personnel/
 Content-Type: application/json
 
