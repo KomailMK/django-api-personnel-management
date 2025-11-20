@@ -7,9 +7,9 @@
     npm install
     ```
 2.  Run the development server:
-    \`\`\`bash
+    ```bash
     npm run dev
-    \`\`\`
+    ```
 3.  Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Backend Setup (Django + MySQL)
@@ -21,21 +21,21 @@
 ### Installation
 
 1.  Create a virtual environment:
-    \`\`\`bash
+    ```bash
     python -m venv venv
     source venv/bin/activate  # On Windows: venv\Scripts\activate
-    \`\`\`
+    ```
 
 2.  Install Python packages:
-    \`\`\`bash
+    ```bash
     pip install django djangorestframework mysqlclient django-cors-headers
-    \`\`\`
+    ```
 
 3.  Create a new Django project:
-    \`\`\`bash
+    ```bash
     django-admin startproject biosecure_project .
     python manage.py startapp api
-    \`\`\`
+    ```
 
 4.  **Configuration**:
     - Copy the code from `backend/models.py`, `backend/serializers.py`, and `backend/views.py` into your `api` app.
@@ -45,18 +45,18 @@
 5.  **Database Setup**:
     - Create a MySQL database named `biosecure_db`.
     - Run migrations:
-    \`\`\`bash
+    ```bash
     python manage.py makemigrations
     python manage.py migrate
-    \`\`\`
+    ```
 
 6.  **Run Server**:
-    \`\`\`bash
+    ```bash
     python manage.py runserver
-    \`\`\`
+    ```
 
 The API will be available at `http://localhost:8000/api/personnel/`.
-\`\`\`
+```
 
 
 # API Testing Guide
@@ -66,9 +66,9 @@ This guide shows you how to interact with the Django API without using the front
 ## Prerequisites
 
 Ensure your Django backend is running:
-\`\`\`bash
+```bash
 python manage.py runserver
-\`\`\`
+```
 
 The API will be available at: `http://localhost:8000/api/`
 
@@ -78,7 +78,7 @@ The API will be available at: `http://localhost:8000/api/`
 
 ### Create a New Personnel Record
 
-\`\`\`bash
+```bash
 curl -X POST http://localhost:8000/api/personnel/ \
   -H "Content-Type: application/json" \
   -d '{
@@ -86,19 +86,19 @@ curl -X POST http://localhost:8000/api/personnel/ \
     "department": "Engineering",
     "face_encoding": "[0.1234, 0.5678, 0.9101, 0.1122]"
   }'
-\`\`\`
+```
 
 ### Get All Personnel Records
 
-\`\`\`bash
+``bash
 curl -X GET http://localhost:8000/api/personnel/
-\`\`\`
+```
 
 ### Get Statistics
 
-\`\`\`bash
+```bash
 curl -X GET http://localhost:8000/api/statistics/
-\`\`\`
+```
 
 ---
 
@@ -106,7 +106,7 @@ curl -X GET http://localhost:8000/api/statistics/
 
 Create a file called `test_api.py`:
 
-\`\`\`python
+```python
 import requests
 import json
 
@@ -147,12 +147,12 @@ if __name__ == "__main__":
     
     print("=== Getting Statistics ===")
     get_statistics()
-\`\`\`
+\```
 
 Run it:
-\`\`\`bash
+```bash
 python test_api.py
-\`\`\`
+```
 
 ---
 
@@ -162,7 +162,7 @@ python test_api.py
 2. Create a file called `api-requests.http`
 3. Add this content:
 
-\`\`\`http
+```http
 ### Create new personnel
 POST http://localhost:8000/api/personnel/
 Content-Type: application/json
@@ -188,7 +188,7 @@ Content-Type: application/json
   "department": "IT",
   "face_encoding": "[0.4567, 0.8901, 0.3456, 0.7788]"
 }
-\`\`\`
+```
 
 4. Click "Send Request" above each request to execute
 
@@ -204,13 +204,13 @@ Content-Type: application/json
      - Key: `Content-Type`
      - Value: `application/json`
    - **Body** (raw, JSON):
-     \`\`\`json
+     ```json
      {
        "name": "Test User",
        "department": "Testing",
        "face_encoding": "[0.1, 0.2, 0.3, 0.4]"
      }
-     \`\`\`
+     ```
 3. Click "Send"
 
 ---
@@ -229,7 +229,7 @@ Content-Type: application/json
 
 Create `bulk_insert.py` to add multiple records:
 
-\`\`\`python
+```python
 import requests
 
 BASE_URL = "http://localhost:8000/api/personnel/"
@@ -250,8 +250,8 @@ for person in personnel_list:
         print(f"✗ Failed: {person['name']}")
 
 print(f"\nCompleted! Added {len(personnel_list)} personnel records.")
-\`\`\`
+```
 
 Run it:
-\`\`\`bash
+```bash
 python bulk_insert.py
