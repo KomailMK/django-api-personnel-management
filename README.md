@@ -90,7 +90,7 @@ curl -X POST http://localhost:8000/api/personnel/ \
 
 ### Get All Personnel Records
 
-``bash
+```bash
 curl -X GET http://localhost:8000/api/personnel/
 ```
 
